@@ -6,10 +6,6 @@ html, body{
     height: 100%;
 }
 
-button{
-    cursor: pointer;
-}
-
 body{
     display:grid;
     place-items: center;
@@ -24,12 +20,12 @@ body{
 }
 
 h2{
-    margin: 0 0 12px;
+    margin: 12px;
     font-size: 36px;
     font-weight: 600;
 }
 h3{
-    margin: 0 0 30px;
+    margin: 10px;
     font-weight: 500;
     font-size: 16px;
 }
@@ -52,6 +48,7 @@ h3{
 
 button{
     width: 100%;
+    cursor: pointer;
     height: 56px;
     border: 0;
     background: #216ce7;
