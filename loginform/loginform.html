@@ -6,11 +6,42 @@
         <div class="login-card">
             <h2>Login</h2>
             <h3>Enter your credentials</h3>
-            <form class="login-form">
-                <input type="text" placeholder="username" />
-                <input type="password" placeholder="password"/>
-                <button>Login</button>
+            <form class="login-form" onsubmit="event.preventDefault()" autocomplete="off">
+                <input type="text" id="username" placeholder="username" />
+                <input type="password" id="password" placeholder="password"/>
+                <button id="entry">Login</button>
             </form>
         </div>
+        <table id="display" align="center">
+            <tr>
+                <th>Username</th>
+                <th>Password</th>
+            </tr>
+        </table>
+            <script>
+                const row = 1;
+                const entry = document.getElementById('entry')
+                entry.addEventListener('click',displayDynamically)
+                function displayDynamically(){
+                    const username = document.getElementById('username').value;
+                    const password = document.getElementById('password').value;
+                    if(!username || !password){
+                        alert('please enter all credetials')
+                        return
+                    }
+                    const display = document.getElementById('display');
+                    const insertRow = display.insertRow(row)
+                    const cell1 = insertRow.insertCell(0)
+                    const cell2 = insertRow.insertCell(1)
+                    cell1.innerHTML = username
+                    cell2.innerHTML = password
+                    row ++;
+                    clearForm(); 
+                }
+                function clearForm(){
+                var username = document.getElementById("username").value="";
+                var password = document.getElementById("password").value= "";
+            }
+            </script>
     </body>
 </html>
