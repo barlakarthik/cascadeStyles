@@ -12,14 +12,15 @@
                 <button id="entry">Login</button>
             </form>
         </div>
-        <table id="display" align="center">
+        <table id="display" align="center" border="2">
             <tr>
                 <th>Username</th>
                 <th>Password</th>
+                <th>Actions</th>
             </tr>
         </table>
             <script>
-                const row = 1;
+                var row = 1;
                 const entry = document.getElementById('entry')
                 entry.addEventListener('click',displayDynamically)
                 function displayDynamically(){
@@ -33,14 +34,32 @@
                     const insertRow = display.insertRow(row)
                     const cell1 = insertRow.insertCell(0)
                     const cell2 = insertRow.insertCell(1)
+                    const cell3 = insertRow.insertCell(2)
                     cell1.innerHTML = username
                     cell2.innerHTML = password
+                    cell3.innerHTML = `<button onclick = remove(this)>Delete</button>&nbsp;<button onclick = edit(this)>Edit</button>`
                     row ++;
                     clearForm(); 
                 }
                 function clearForm(){
                 var username = document.getElementById("username").value="";
                 var password = document.getElementById("password").value= "";
+            }
+            function remove(i){ 
+                const ans = confirm('are you sure you want delete??')
+                if(ans == true){
+                    row = i.parentElement.parentElement;
+                    document.getElementById('display').deleteRow(row.rowIndex)
+                }
+            }
+            function edit(i){
+                row = i.parentElement.parentElement;
+                document.getElementById('username').value = row.cells[0].innerHTML;
+                document.getElementById('password').value = row.cells[1].innerHTML;  
+            }
+            function update(o){
+                row.cells[0].innerHTML = document.getElementById('username').value;
+                row.cells[1].innerHTML = document.getElementById('password').value;
             }
             </script>
     </body>
